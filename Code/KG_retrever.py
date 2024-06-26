@@ -115,32 +115,33 @@ df = pd.read_csv('/mount/src/diet-plan-recommendation-system/Code/alergic_combo.
 meal_time =["Breakfast_Items","Lunch_Items","Dinner_Items","Pre_workout_snack_Items","Post_workout_snack_Items","Mor_snac_Items","Eve_snack_Items"]
 
 
-def csv_data_retrever(region, condition , diet, goal, value,alergic_food):
+def csv_data_retrever(region, condition , diet, goal, value, alergic_food):
     value = int(value)
-    if alergic_food == 'None':
-      
 
-      querry = f'Diet == "{diet}" & Type == "{goal}" & Region == "{region}" & Condition =="{condition}" & Value == {value}'
-      print("querry",querry)
-      dfq = df.query(querry)
+    querry = f'Diet == "{diet}" & Region == "{region}" & Value == {value}'
 
-      data = dfq[meal_time]
-      random_sample = data.sample(n=7)
-      random_sample.reset_index(drop=True, inplace=True)
+    add_querry = 
 
-      print(dfq)
-      
-    else:
+    if not (alergic_food == 'None'):
+      querry += f'& {alergic_food} == False'
+    
+    if not (goal =='Maintain'):
+      querry += f'& Type == "{goal}"'
+    
+    if not(condition == 'None'):
+      querry += f'& Condition =="{condition}"'
+
+ 
        
-      querry = f'Diet == "{diet}" & Type == "{goal}" & Region == "{region}" & Condition =="{condition}" & Value == {value} & {alergic_food} == False'
-      print("querry",querry)
-      dfq = df.query(querry)
+    querry = f'Diet == "{diet}" & Region == "{region}"  & Value == {value} & {alergic_food} == False'
+    print("querry",querry)
+    dfq = df.query(querry)
 
-      data = dfq[meal_time]
-      random_sample = data.sample(n=7)
-      random_sample.reset_index(drop=True, inplace=True)
+    data = dfq[meal_time]
+    random_sample = data.sample(n=7)
+    random_sample.reset_index(drop=True, inplace=True)
 
-      print(dfq)
+    print(dfq)
        
 
     return random_sample

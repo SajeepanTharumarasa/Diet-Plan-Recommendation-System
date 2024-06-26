@@ -54,7 +54,7 @@ if 'expert_suggestion' not in st.session_state:
     st.session_state.expert_suggestion = ""
 
 if 'user_dieses' not in st.session_state:
-    st.session_state.user_dieses = ""
+    st.session_state.user_dieses = "None"
 
 if 'alergic_food' not in st.session_state:
     st.session_state.alergic_food = ""
@@ -179,8 +179,8 @@ elif selected == "General Info":
             st.session_state.user_gender = option = st.selectbox("Gender", ("Male", "Female"))
             st.session_state.user_weight = st.number_input("Weight(Kg)", value=st.session_state.user_weight, help="Enter your Weight")
             st.session_state.user_height = st.number_input("Height(cm)", value=st.session_state.user_height, help="Enter your Height")
-            st.session_state.user_dieses = st.selectbox("Disease", ("Diabetes","Cholesterol","Thyroid"))
-            st.session_state.user_goal = st.selectbox("Diet-Goal", ("Weight Gain", "Weight Loss"))
+            st.session_state.user_dieses = st.selectbox("Disease", value=st.session_state.user_dieses,("None","Diabetes","Cholesterol","Thyroid"))
+            st.session_state.user_goal = st.selectbox("Diet-Goal", ("Maintain","Weight Gain", "Weight Loss"))
         
     st.session_state.alergic_food  = st.selectbox("Alergic food", ("None", "Milk", "Eggs", "Fish", "Peanuts","Wheat"))
 
