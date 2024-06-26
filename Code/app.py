@@ -238,7 +238,7 @@ elif selected == "Diet-Planning":
         st.write(f" - Age: {st.session_state.user_age}")
         st.write(f" - Gender: {st.session_state.user_gender}")
         st.write(f" - BMI: {st.session_state.bmi:.2f}")
-        st.write(f" - According to your BMI your diet goal is {diet_recommendation}")
+        st.write(f" - According to your BMI your diet goal is {st.session_state.user_goal}")
         st.write(f" - You have {dieses} disease")
         st.write(f" - Your Daily calorie need for your diet goal is {daily_calories_needed:.2f} Cal")
 
