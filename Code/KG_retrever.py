@@ -111,7 +111,7 @@ def KG_data_retiver(region,diet,d_type,condition):
   return kg_data
 
 
-df = pd.read_csv('alergic_combo.csv')
+df = pd.read_csv('/mount/src/diet-plan-recommendation-system/Code/alergic_combo.csv')
 meal_time =["Breakfast_Items","Lunch_Items","Dinner_Items","Pre_workout_snack_Items","Post_workout_snack_Items","Mor_snac_Items","Eve_snack_Items"]
 
 
