@@ -120,8 +120,6 @@ def csv_data_retrever(region, condition , diet, goal, value, alergic_food):
 
     querry = f'Diet == "{diet}" & Region == "{region}" & Value == {value}'
 
-    add_querry = 
-
     if not (alergic_food == 'None'):
       querry += f'& {alergic_food} == False'
     
