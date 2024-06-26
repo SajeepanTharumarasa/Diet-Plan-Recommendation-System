@@ -57,7 +57,9 @@ if 'user_dieses' not in st.session_state:
     st.session_state.user_dieses = "None"
 
 if 'alergic_food' not in st.session_state:
-    st.session_state.alergic_food = ""
+    st.session_state.alergic_food = "None"
+if 'user_goal' not in st.session_state:
+    st.session_state.user_goal = "Maintain"
 
 
 def get_image_as_base64(url):
@@ -128,7 +130,7 @@ if selected != st.session_state.active_tab:
 
 # Home tab
 if selected == "Home":
-    image_path = "/mount/src/diet-plan-recommendation-system/Code/backround.jpg" 
+    image_path = "backround.jpg" 
     base64_image = get_image_as_base64(image_path)
     background_image_css = f"background-image: url('data:image/png;base64,{base64_image}');"
 
@@ -180,9 +182,9 @@ elif selected == "General Info":
             st.session_state.user_weight = st.number_input("Weight(Kg)", value=st.session_state.user_weight, help="Enter your Weight")
             st.session_state.user_height = st.number_input("Height(cm)", value=st.session_state.user_height, help="Enter your Height")
             st.session_state.user_dieses = st.selectbox("Disease", ("None","Diabetes","Cholesterol","Thyroid"), index=0, key=None)
-            st.session_state.user_goal = st.selectbox("Diet-Goal", ("Maintain","Weight Gain", "Weight Loss"))
+            st.session_state.user_goal = st.selectbox("Diet-Goal", ("Maintain", "Weight Gain", "Weight Loss"))
         
-    st.session_state.alergic_food  = st.selectbox("Alergic food", ("None", "Milk", "Eggs", "Fish", "Peanuts","Wheat"))
+    st.session_state.alergic_food  = st.selectbox("Alergic food", ("None", "Milk", "Eggs", "Fish", "Peanuts","Wheat"),index=0, key=None)
 
 
 
@@ -250,7 +252,8 @@ elif selected == "Diet-Planning":
                                         st.session_state.food_preference, 
                                         st.session_state.user_goal,
                                         daily_need_calori,
-                                        st.session_state.alergic_food)
+                                        st.session_state.alergic_food
+                                        dieses)
             
             
 

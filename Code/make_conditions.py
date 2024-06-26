@@ -30,15 +30,7 @@ def make_conditioner(gender, age, bmi, glucose, height_cm, weight_kg, tc, tg, hd
     
     daily_need_calori = (daily_calories_needed//100+1)*100
 
-    # print(daily_calories_needed)
-    # if daily_calories_needed <1300:
-    #     daily_need_calori = 1200
-    # elif daily_calories_needed >1300 and daily_calories_needed<1700:
-    #     daily_need_calori = 1600
-    # elif daily_calories_needed>1701 and daily_calories_needed<2100:
-    #     daily_need_calori = 2000
-    # elif daily_calories_needed>2101:
-    #     daily_need_calori = 2400
+   
     
     print("daily_calories_needed",daily_calories_needed)
     return daily_need_calori, diet_recommendation, dieses,daily_calories_needed
@@ -46,7 +38,7 @@ def make_conditioner(gender, age, bmi, glucose, height_cm, weight_kg, tc, tg, hd
 
 def calculate_caloric_needs(weight, height, age, gender, activity_level, goal='Maintain', weight_change_per_week=0):
     # BMR calculation based on gender
-    if gender == 'male':
+    if gender == 'Male':
         bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
     else:
         bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)

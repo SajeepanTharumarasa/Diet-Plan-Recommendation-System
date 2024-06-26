@@ -111,35 +111,39 @@ def KG_data_retiver(region,diet,d_type,condition):
   return kg_data
 
 
-df = pd.read_csv('/mount/src/diet-plan-recommendation-system/Code/alergic_combo.csv')
+df = pd.read_csv('alergic_combo.csv')
 meal_time =["Breakfast_Items","Lunch_Items","Dinner_Items","Pre_workout_snack_Items","Post_workout_snack_Items","Mor_snac_Items","Eve_snack_Items"]
 
 
-def csv_data_retrever(region, condition , diet, goal, value, alergic_food):
+def csv_data_retrever(region, condition , diet, goal, value, alergic_food,dieses):
     value = int(value)
 
-    querry = f'Diet == "{diet}" & Region == "{region}" & Value == {value}'
+    querry = f'Diet == "{diet}" & Region == "{region}"'
+
+    if condition == 'None':
+       condition = dieses
+
+    # print(region, condition , diet, goal, value, alergic_food)
 
     if not (alergic_food == 'None'):
-      querry += f'& {alergic_food} == False'
+      querry += f' & {alergic_food} == False'
     
     if not (goal =='Maintain'):
-      querry += f'& Type == "{goal}"'
+      querry += f' & Type == "{goal}"'
     
     if not(condition == 'None'):
-      querry += f'& Condition =="{condition}"'
+      querry += f' & Condition =="{condition}"'
 
  
        
-    querry = f'Diet == "{diet}" & Region == "{region}"  & Value == {value} & {alergic_food} == False'
-    print("querry",querry)
+    # print("querry",querry)
     dfq = df.query(querry)
 
     data = dfq[meal_time]
     random_sample = data.sample(n=7)
     random_sample.reset_index(drop=True, inplace=True)
 
-    print(dfq)
+    # print(dfq)
        
 
     return random_sample
